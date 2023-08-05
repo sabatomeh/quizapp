@@ -27,7 +27,6 @@ class _quizState extends State<quiz> {
             ),
           ),
           const SizedBox(height: 32),
-          Text('Question $currentIndex/$listQ.length'),
           _questions(),
           _answerList(),
           _nextButton(),
@@ -103,12 +102,7 @@ class _quizState extends State<quiz> {
             setState(() {
               selectedAnswer = a;
             });
-          } else {
-            const snackBar = SnackBar(
-              content: Text('You must select an answer!'),
-            );
-            ScaffoldMessenger.of(context).showSnackBar(snackBar);
-          }
+          } 
         },
       ),
     );
