@@ -26,6 +26,8 @@ class _quizState extends State<quiz> {
               fontSize: 25,
             ),
           ),
+          const SizedBox(height: 32),
+          Text('Question $currentIndex/$listQ.length'),
           _questions(),
           _answerList(),
           _nextButton(),
@@ -94,13 +96,18 @@ class _quizState extends State<quiz> {
           onPrimary: isSelected ? Colors.white : Colors.black,
         ),
         onPressed: () {
-          if (selectedAnswer == null) {
+          if (selectedAnswer != null) {
             if (a.isCorrect) {
               score++;
             }
             setState(() {
               selectedAnswer = a;
             });
+          } else {
+            const snackBar = SnackBar(
+              content: Text('You must select an answer!'),
+            );
+            ScaffoldMessenger.of(context).showSnackBar(snackBar);
           }
         },
       ),
